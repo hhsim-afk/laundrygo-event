@@ -454,3 +454,11 @@ body {
   width: auto;
   display: block;
 }
+/* ── 신청 완료 버튼 상태 ── */
+.submit-btn.completed {
+  background: linear-gradient(135deg, #00C66F, #007C42);
+  box-shadow: none;
+  cursor: default;
+  opacity: 1;
+  transform: none !important;
+}
