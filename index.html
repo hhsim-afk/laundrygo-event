@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>LAUNDRYGO 이벤트 참여</title>
+  <title>런드리고 효도지원금 신청</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -21,20 +21,15 @@
         </svg>
       </button>
 
-      <!-- 브랜드 마크 -->
-      <div class="brand-mark" aria-label="LAUNDRYGO">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <rect width="20" height="20" rx="6" fill="#00C66F"/>
-          <path d="M5 10.5C5 7.46 7.46 5 10.5 5S16 7.46 16 10.5 13.54 16 10.5 16" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
-          <circle cx="10.5" cy="10.5" r="2" fill="white"/>
-        </svg>
-        <span class="brand-name">LAUNDRYGO</span>
+      <!-- 로고 -->
+      <div class="brand-mark">
+        <img src="logo.png" alt="LaundryGo" class="brand-logo" />
       </div>
 
       <!-- 헤더 -->
       <header class="popup-header">
         <span class="event-badge">이벤트 참여 신청</span>
-        <h1 id="popup-title" class="popup-title">세탁&amp;청소 서비스<br />무료 체험 이벤트</h1>
+        <h1 id="popup-title" class="popup-title">런드리고 효도지원금<br />신청하기</h1>
         <p class="popup-desc">아래 정보를 입력하시면 이벤트 참여가 완료됩니다.</p>
       </header>
 
@@ -127,7 +122,7 @@
         <p class="form-global-error" id="form-global-error" role="alert" hidden></p>
 
         <button type="submit" class="submit-btn" id="submit-btn">
-          <span class="btn-text">이벤트 참여하기</span>
+          <span class="btn-text">신청하기</span>
           <span class="btn-loader" hidden>
             <span class="spinner" aria-hidden="true"></span>
             처리 중…
@@ -144,9 +139,9 @@
             <path d="M17 28.5l7.5 7.5 14.5-15" stroke="#00C66F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <h2 class="success-title">참여 신청 완료!</h2>
+        <h2 class="success-title">신청 완료!</h2>
         <p class="success-desc">
-          이벤트 참여가 정상적으로 접수되었습니다.<br />
+          효도지원금 신청이 정상적으로 접수되었습니다.<br />
           결과는 개별 연락드릴 예정입니다. 감사합니다!
         </p>
         <button type="button" class="confirm-btn" id="confirm-btn">확인</button>
