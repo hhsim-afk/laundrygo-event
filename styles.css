@@ -208,9 +208,10 @@ body {
 }
 
 .field-textarea {
-  resize: vertical;
-  min-height: 96px;
+  resize: none;
+  height: 52px;
   line-height: 1.65;
+  overflow-y: auto;
 }
 
 /* ── Helper button ── */
