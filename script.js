@@ -1,21 +1,15 @@
-// Google Apps Script 웹 앱 URL
 const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrbbNpttyNc-Dz8CiGeQiZsCCmNZSboZAUTtZ6COM5BecELgoCj-iNBYIG-h3bw6Gr8A/exec';
 
-const form          = document.getElementById('event-form');
-const submitBtn     = document.getElementById('submit-btn');
-const successScreen = document.getElementById('success-screen');
-const globalError   = document.getElementById('form-global-error');
+const form        = document.getElementById('event-form');
+const submitBtn   = document.getElementById('submit-btn');
+const globalError = document.getElementById('form-global-error');
 
-// ── 전화번호 자동 포맷 (010-XXXX-XXXX) ──
+// ── 전화번호 자동 포맷 ──
 document.getElementById('participantPhone').addEventListener('input', function () {
   const digits = this.value.replace(/\D/g, '').slice(0, 11);
-  if (digits.length <= 3) {
-    this.value = digits;
-  } else if (digits.length <= 7) {
-    this.value = `${digits.slice(0,3)}-${digits.slice(3)}`;
-  } else {
-    this.value = `${digits.slice(0,3)}-${digits.slice(3,7)}-${digits.slice(7)}`;
-  }
+  if (digits.length <= 3)      this.value = digits;
+  else if (digits.length <= 7) this.value = `${digits.slice(0,3)}-${digits.slice(3)}`;
+  else                         this.value = `${digits.slice(0,3)}-${digits.slice(3,7)}-${digits.slice(7)}`;
 });
 
 // ── 고객 정보 확인 방법 토글 ──
@@ -28,12 +22,6 @@ document.getElementById('helper-toggle').addEventListener('click', function () {
 
 // ── 닫기 버튼 ──
 document.querySelector('.close-btn').addEventListener('click', () => {
-  if (window.history.length > 1) window.history.back();
-  else window.close();
-});
-
-// ── 확인 버튼 (성공 화면) ──
-document.getElementById('confirm-btn').addEventListener('click', () => {
   if (window.history.length > 1) window.history.back();
   else window.close();
 });
@@ -86,13 +74,6 @@ function clearErrors() {
   document.querySelectorAll('.field-error').forEach(el => (el.textContent = ''));
   document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
   globalError.hidden = true;
-  globalError.textContent = '';
-}
-
-function setLoading(loading) {
-  submitBtn.disabled = loading;
-  submitBtn.querySelector('.btn-text').hidden  =  loading;
-  submitBtn.querySelector('.btn-loader').hidden = !loading;
 }
 
 // ── 폼 제출 ──
@@ -100,7 +81,7 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
   if (!validate()) return;
 
-  setLoading(true);
+  submitBtn.disabled = true;
 
   const body = new URLSearchParams({
     participantName:    document.getElementById('participantName').value.trim(),
@@ -111,20 +92,13 @@ form.addEventListener('submit', async (e) => {
   });
 
   try {
-    await fetch(APP_SCRIPT_URL, {
-      method: 'POST',
-      mode:   'no-cors',
-      body,
-    });
-    showSuccess();
+    await fetch(APP_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body });
+    // 신청 완료 버튼으로 전환
+    submitBtn.textContent = '신청 완료';
+    submitBtn.classList.add('completed');
   } catch {
+    submitBtn.disabled = false;
     globalError.textContent = '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.';
     globalError.hidden = false;
-    setLoading(false);
   }
 });
-
-function showSuccess() {
-  form.hidden          = true;
-  successScreen.hidden = false;
-}
