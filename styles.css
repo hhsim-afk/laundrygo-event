@@ -456,7 +456,8 @@ body {
 }
 /* ── 신청 완료 버튼 상태 ── */
 .submit-btn.completed {
-  background: linear-gradient(135deg, #00C66F, #007C42);
+  background: #C4C9C7;
+  color: #8A9490;
   box-shadow: none;
   cursor: default;
   opacity: 1;
