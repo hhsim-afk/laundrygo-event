@@ -1,4 +1,4 @@
-/* ── Fonts ── */
+﻿/* ── Fonts ── */
 @import url('https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css');
 
 @font-face {
@@ -446,4 +446,11 @@ body {
   .popup-title { font-size: 1.65rem; }
 
   .close-btn { top: 14px; right: 14px; }
+}
+
+/* ── Brand logo ── */
+.brand-logo {
+  height: 28px;
+  width: auto;
+  display: block;
 }
